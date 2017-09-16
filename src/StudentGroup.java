@@ -163,18 +163,50 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void removeToElement(Student student) {
-		// Add your implementation here
+		if(student == null) {
+			throw new IllegalArgumentException();
+		} else {
+			for (int i = 0; i < students.length; i++){
+				if( student == students[i] ) {
+					break;
+				} else {
+					students[i] = null;
+				}
+			}
+		}
 	}
 
 	@Override
 	public void bubbleSort() {
-		// Add your implementation here
+		int i,j;
+		Student temp;
+
+		for (j = students.length - 1; j > 0; j--) {
+			for (i = 0; i < j; i++) {
+				if (students[i].getId() > students[i + 1].getId()) {
+					temp = students[i];
+					students[i] = students[i + 1];
+					students[i + 1] = temp;
+				}
+			}
+		}
 	}
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
-		// Add your implementation here
-		return null;
+		int sCount = 1, j = 0;
+		Student[] tStudents;
+
+		if (date == null) {
+			throw new IllegalArgumentException();
+		} else {
+			for (int i = 0; i < students.length; i++) {
+				if (date.equals(students[i].getBirthDate())
+						|| students[i].getBirthDate().before(date)) {
+					sCount++;
+				}
+			}
+
 	}
 
 	@Override
