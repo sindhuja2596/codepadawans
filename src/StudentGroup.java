@@ -207,6 +207,17 @@ public class StudentGroup implements StudentArrayOperation {
 				}
 			}
 
+			tStudents = new Student[sCount];
+
+			for (int i = 0; i < students.length; i++) {
+				if (date.equals(students[i].getBirthDate())
+						|| students[i].getBirthDate().before(date)) {
+					tStudents[j++] = students[i];
+				}
+			}
+
+			return tStudents;
+		}
 	}
 
 	@Override
