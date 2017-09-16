@@ -260,8 +260,24 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public int getCurrentAgeByDate(int indexOfStudent) {
-		// Add your implementation here
-		return 0;
+		Calendar dob, now;
+		int age;
+
+		if( indexOfStudent == 0 ) {
+			throw new IllegalArgumentException();
+		} else {
+			dob = Calendar.getInstance();
+			now = Calendar.getInstance();
+			now.setTime(new Date());
+			dob.setTime(this.getStudent(indexOfStudent).getBirthDate());
+
+			age = now.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+			if(now.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR))  {
+				age-=1;
+			}
+
+			return age;
+		}
 	}
 
 	@Override
