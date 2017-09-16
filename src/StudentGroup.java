@@ -222,8 +222,34 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
-		// Add your implementation here
-		return null;
+		int sCount = 1, j = 0;
+		Student[] tStudents;
+
+		if (firstDate == null || lastDate == null) {
+			throw new IllegalArgumentException();
+		} else {
+			for (int i = 0; i < students.length; i++) {
+				if ( firstDate.equals(students[i].getBirthDate())
+						|| lastDate.equals(students[i].getBirthDate())
+						|| students[i].getBirthDate().after(firstDate)
+						&& students[i].getBirthDate().before(lastDate)) {
+					sCount++;
+				}
+			}
+
+			tStudents = new Student[sCount];
+
+			for (int i = 0; i < students.length; i++) {
+				if ( firstDate.equals(students[i].getBirthDate())
+						|| lastDate.equals(students[i].getBirthDate())
+						|| students[i].getBirthDate().after(firstDate)
+						&& students[i].getBirthDate().before(lastDate)) {
+					tStudents[j++] = students[i];
+				}
+			}
+
+			return tStudents;
+		}
 	}
 
 	@Override
