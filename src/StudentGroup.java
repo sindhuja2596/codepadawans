@@ -254,8 +254,19 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
-		// Add your implementation here
-		return null;
+		Date eDate, sDate;
+
+		if (date == null) {
+			throw new IllegalArgumentException();
+		} else {
+			sDate = date;
+			Calendar c = Calendar.getInstance();
+			c.setTime(sDate);
+			c.add(Calendar.DATE, days);
+			eDate = c.getTime();
+
+			return this.getBetweenBirthDates(sDate, eDate);
+		}
 	}
 
 	@Override
