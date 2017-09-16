@@ -229,7 +229,7 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException();
 		} else {
 			for (int i = 0; i < students.length; i++) {
-				if ( firstDate.equals(students[i].getBirthDate())
+				if (students[i] != null && firstDate.equals(students[i].getBirthDate())
 						|| lastDate.equals(students[i].getBirthDate())
 						|| students[i].getBirthDate().after(firstDate)
 						&& students[i].getBirthDate().before(lastDate)) {
@@ -240,7 +240,7 @@ public class StudentGroup implements StudentArrayOperation {
 			tStudents = new Student[sCount];
 
 			for (int i = 0; i < students.length; i++) {
-				if ( firstDate.equals(students[i].getBirthDate())
+				if (students[i] != null && firstDate.equals(students[i].getBirthDate())
 						|| lastDate.equals(students[i].getBirthDate())
 						|| students[i].getBirthDate().after(firstDate)
 						&& students[i].getBirthDate().before(lastDate)) {
