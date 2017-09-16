@@ -57,27 +57,61 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void addFirst(Student student) {
-		// Add your implementation here
+		if(student == null) {
+			throw new IllegalArgumentException();
+		} else {
+			students[0] = student;
+		}
 	}
 
 	@Override
 	public void addLast(Student student) {
-		// Add your implementation here
+		if(student == null) {
+			throw new IllegalArgumentException();
+		} else {
+			int lastIndex = students.length - 1;
+			students[lastIndex] = student;
+		}
 	}
 
 	@Override
 	public void add(Student student, int index) {
-		// Add your implementation here
+		if(student == null || index < 0 || index >= students.length) {
+			throw new IllegalArgumentException();
+		} else {
+			students[index] = student;
+		}
 	}
 
 	@Override
 	public void remove(int index) {
-		// Add your implementation here
+		if(index < 0 || index >= students.length) {
+			throw new IllegalArgumentException();
+		} else {
+			students[index] = null;
+		}
 	}
 
 	@Override
 	public void remove(Student student) {
-		// Add your implementation here
+		if(student == null) {
+			throw new IllegalArgumentException();
+		} else {
+			boolean stdFound = false;
+
+			for(int i = 0; i < students.length; i++)
+			{
+				if( students[i] != null && student == students[i] ){
+					stdFound = true;
+					students[i] = null;
+					break;
+				}
+			}
+
+			if(!stdFound){
+				throw new IllegalArgumentException("Student not exist");
+			}
+		}
 	}
 
 	@Override
